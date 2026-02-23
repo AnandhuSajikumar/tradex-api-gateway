@@ -11,13 +11,32 @@ import java.util.Map;
 @RequestMapping("/fallback")
 public class FallbackController {
 
-    @RequestMapping("/transact")
-    public ResponseEntity<Map<String, Object>> transactServiceFallback() {
+    private ResponseEntity<Map<String, Object>> buildFallbackResponse(String serviceName) {
         Map<String, Object> response = new HashMap<>();
         response.put("success", false);
-        response.put("message", "Transaction Service is currently unavailable. Please try again later.");
+        response.put("message", serviceName + " Service is currently unavailable. Please try again later.");
         response.put("errorCode", "SERVICE_UNAVAILABLE");
 
         return ResponseEntity.ok(response);
+    }
+
+    @RequestMapping("/transact")
+    public ResponseEntity<Map<String, Object>> transactServiceFallback() {
+        return buildFallbackResponse("Transaction");
+    }
+
+    @RequestMapping("/portfolio")
+    public ResponseEntity<Map<String, Object>> portfolioServiceFallback() {
+        return buildFallbackResponse("Portfolio");
+    }
+
+    @RequestMapping("/identity")
+    public ResponseEntity<Map<String, Object>> identityServiceFallback() {
+        return buildFallbackResponse("Identity");
+    }
+
+    @RequestMapping("/market")
+    public ResponseEntity<Map<String, Object>> marketServiceFallback() {
+        return buildFallbackResponse("Market");
     }
 }
