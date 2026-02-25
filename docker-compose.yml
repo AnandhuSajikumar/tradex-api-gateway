@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-  # Infrastructure
   postgres:
     image: postgres:15
     container_name: tradex-postgres
@@ -46,7 +45,6 @@ services:
     networks:
       - tradex-net
 
-  # Core Services
   eureka-server:
     build: ../tradex-eureka-server
     container_name: tradex-eureka-server
@@ -78,7 +76,6 @@ services:
       timeout: 5s
       retries: 5
 
-  # Domain Services
   identity-service:
     build: ../tradex-identity-service
     container_name: tradex-identity-service
@@ -150,7 +147,6 @@ services:
     networks:
       - tradex-net
 
-  # API Gateway
   api-gateway:
     build: ../tradex-api-gateway
     container_name: tradex-api-gateway
