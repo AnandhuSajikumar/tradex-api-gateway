@@ -83,6 +83,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/tradex_identity
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
       - SPRING_CONFIG_IMPORT=optional:configserver:http://config-server:8888
+      - JWT_SECRET=5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
     ports:
       - "8083:8083"
     depends_on:
@@ -100,6 +101,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/tradex_portfolio
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
       - SPRING_CONFIG_IMPORT=optional:configserver:http://config-server:8888
+      - JWT_SECRET=5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
     ports:
       - "8082:8082"
     depends_on:
@@ -117,6 +119,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/tradex_transact
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
       - SPRING_CONFIG_IMPORT=optional:configserver:http://config-server:8888
+      - JWT_SECRET=5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
     ports:
       - "8081:8081"
     depends_on:
